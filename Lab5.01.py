@@ -62,7 +62,8 @@ while True:
     "1. Look up abbreviation \n"
     "2. Delete an abbreviation \n"
     "3. Update a definition \n"
-    "4. Display whole dictionary \n"))
+    "4. Display whole dictionary \n"
+    "5. Add a new abbreviation \n"))
     if user_choice == 1:
         user_word = input("What abbreviation would you like to look up? ")
         for i in abbreviations:
@@ -75,8 +76,9 @@ while True:
         for word in abbreviations:
             if word == delete_abb:
                 del abbreviations[word]
+                print(f"{delete_abb} has been deleted!")
                 break
-            else:
+            elif delete_abb not in abbreviations:
                 print(f"{delete_abb} is not defined in my dictionary.")
                 break
     elif user_choice == 3:
@@ -91,3 +93,7 @@ while True:
     elif user_choice == 4:
         for item, definition in abbreviations.items():
             print(definition)
+    elif user_choice == 5:
+        new_word = input("Enter the abbreviation you want to add: ")
+        new_abb = input(f" Enter the definition for {new_word}: ")
+        abbreviations[new_word] = f"{new_word}: a phrase meaning {new_abb}"
